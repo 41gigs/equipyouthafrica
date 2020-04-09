@@ -1,0 +1,46 @@
+{% extends 'dashboard/layout.html' %}
+{% import 'macros.html' as m %}
+
+{% set active_page = url_for('.post_list') %}
+
+{% block title %} | Blog {% endblock %}
+
+
+
+{% block page_content %}
+<!-- Header -->
+<div class="dashboard-header">
+	<h2 class="flex-1">Blog</h2>
+	<a class="btn-sm btn-green inline-flex items-center" href="{{url_for('.post_action')}}">
+	{{m.icon_plus(size=4)}} <span class="ml-1">New</span>
+	</a>
+</div>
+
+<table class="dashboard-table">
+		<thead>
+			<th class="text-left">Title</th>
+			<th class="text-center">Modified</th>
+			<th></th>
+		</thead>
+		<tbody>
+			{% for p in posts %}
+				<tr>
+					<td>{{p.title}}</td>
+					<td class="text-center">{{p.modified|pretty_date}}</td>
+					<td class="text-right">
+						<a class="inline-flex text-blue-500 mr-2" 
+						   href="{{url_for('.post_action', uid=p.uid)}}">
+									{{m.icon_edit()}}
+						</a>
+						<a class="inline-flex text-red-500" 
+						   href="{{url_for('.post_delete', uid=p.uid)}}">
+								{{m.icon_trash()}}
+						</a>
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+
+</table>
+				
+{% endblock %}

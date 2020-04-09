@@ -1,0 +1,32 @@
+{% extends 'dashboard/layout.html' %}
+{% import 'macros.html' as m %}
+{% set active_page = url_for('.setting_list') %}
+
+{% block title %} | {% if setting %} Edit {% else %} New {% endif %} Setting {% endblock %}
+
+{% block page_content %}
+<div class="dashboard-header">
+	<h2 class="flex-1">{% if setting %} Edit {% else %} New {% endif %} Setting</h2>
+</div>
+
+
+<form method="post" enctype="multipart/form-data" role="form" novalidate class="bg-gray-300 p-5 rounded">
+
+	{{form.hidden_tag()}}
+
+	{{m.input(form.key)}}
+	{{m.input(form.value)}}
+
+	{% if setting.image %}
+		
+			<img src="{{setting.imgsrc}}"  class="w-64 shadow" alt="{{setting.key}}">
+		
+	{% endif %}
+	
+		{{m.file(form.image)}}				
+			<button class="btn-lg btn-dark">Save</button>
+	
+			</form>
+
+
+ {% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'dashboard/layout.html' %}
+{% import 'macros.html' as m %}
+{% set active_page = url_for('.gallery_list') %}
+
+{% block title %} | {% if gallery %} Edit {% else %} New {% endif %} Gallery {% endblock %}
+
+{% block page_content %}
+<div class="dashboard-header">
+	<h2 class="flex-1">{% if setting %} Edit {% else %} New {% endif %} Gallery Item</h2>
+</div>
+
+
+<form method="post" enctype="multipart/form-data" role="form" novalidate class="bg-gray-300 p-5 rounded">
+
+	{{form.hidden_tag()}}
+
+	{{m.input(form.caption)}}
+	
+	{% if gallery.image %}
+	
+			<img src="{{gallery.imgsrc}}" class="w-64 shadow" alt="{{gallery.caption}}">
+		
+	{% endif %}
+	
+	{{m.file(form.image)}}
+	<button class="btn-lg btn-dark">Save</button>
+	
+			</form>
+
+
+ {% endblock %}

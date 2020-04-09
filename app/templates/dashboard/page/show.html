@@ -1,0 +1,21 @@
+{% extends 'dashboard/layout.html' %}
+{% import 'macros.html' as m %}
+
+{% block title %} Page Preview {% endblock %}
+
+{% block page_content %}
+<section class="page-preview">
+<div class="coantainer">
+<div class="columns">
+	<div class="column is-9">
+		<h2>{{page.title}}</h2>
+		{{page.body}}
+	</div>
+	<div class="column">
+		images
+	</div>
+
+</div>
+</div>
+</section>
+{% endblock %}

@@ -1,0 +1,17 @@
+{
+  "scripts": {
+    "dev": "postcss tailwind.css -o css/style.css",
+    "build": "postcss tailwind.css -o css/style.css"
+  },
+  "dependencies": {
+    "autoprefixer": "^9.5.1",
+    "tailwindcss": "^1.0"
+  },
+  "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^1.2.0",
+    "concurrently": "^4.1.0",
+    "cross-env": "^5.2.0",
+    "cssnano": "^4.1.10",
+    "postcss-cli": "^6.1.2"
+  }
+}

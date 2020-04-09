@@ -1,0 +1,18 @@
+{% extends 'dashboard/layout.html' %}
+{% import 'macros.html' as m %}
+{% set active_page = url_for('.message_list') %}
+
+{% block title %} | Read Message {% endblock %}
+
+{% block page_content %}
+<div class="dashboard-header">
+	<h2 class="flex-1">Message</h2>
+</div>
+<div class="bg-white p-5">
+	<h2 class="text-lg font-bold border-b px-4  py-2"><span class="text-gray-500">From :</span> {{message.name}}</h2>
+	<p class="font-bold border-b px-4 py-2"><span class="text-gray-500">Email :</span> {{message.email}}</p>
+<p class="px-4 py-2 mb-8">{{message.text}}</p>
+
+<a class="btn btn-dark" href="{{url_for('.message_list')}}">Back</a>
+</div>
+ {% endblock %}

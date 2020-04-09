@@ -1,0 +1,132 @@
+
+{% set label_class='block text-gray-700 font-bold' %}
+
+{% set field_class='appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-400 rounded py-3 px-4  leading-tight focus:outline-none focus:bg-white' %}
+{# Form errors #}
+{% macro form_errors(form) %}
+{% if form.errors %}
+	<div class="w-3/4 flex items-center mx-auto bg-red-500 text-white rounded px-3 py-2 mb-5">    
+		<svg class="fill-current h-5 w-5 mr-2" viewBox="0 0 20 20"><path d="M19.511 17.98L10.604 1.348a.697.697 0 0 0-1.208 0L.49 17.98a.675.675 0 0 0 .005.68c.125.211.352.34.598.34h17.814a.694.694 0 0 0 .598-.34.677.677 0 0 0 .006-.68zM11 17H9v-2h2v2zm0-3.5H9V7h2v6.5z"/></svg>  
+		<p class="font-bold">Please fill in the form correctly!</p>
+	</div>
+{% endif %}
+{% endmacro %}
+
+{# Errors #}
+{% macro field_extras(f) %}
+{% if f.description %}
+	<p class="text-gray-600 text-xs ml-2 font-medium ">{{f.description}}</p>
+{% endif %}
+{% if f.errors %}
+	{% for e in f.errors %}
+		<p class="text-red-500 text-xs italic">{{e|safe}}</p>
+	{% endfor %}
+{% endif %}
+{% endmacro %}
+
+{# input #}
+{% macro input(f, rows=5, class_='') %}
+<div class="relative mb-3 mt-8">
+	<label for="{{f.id}}" class="field-label">{{f.label.text}}</label>
+	
+		{% if f.type == 'TextAreaField' %}
+		{{f(class='field', rows=rows)}}
+		{% else %}
+		{{f(class='field')}}
+		{% endif %}
+		
+	{{field_extras(f)}}
+</div>
+{% endmacro %}
+
+{# checkbox #}
+{% macro checkbox(f) %}
+<div class="relative w-full mb-3 mt-8">
+	
+	<label for="{{f.id}}" class="field-label">
+	{{f()}} {{f.label}}
+</label>
+{{field_extras(f)}}
+</div>
+{% endmacro %}
+
+{# file #}
+{% macro file(f, type='image') %}
+<div class="w-48 mb-4">
+	<label class="field-label" for="{{f.id}}">{{f.label}}</label>
+	   {{f()}}
+	   {{field_extras(f)}}
+</div>
+{% endmacro %}
+
+{% macro icon_facebook(size=6) %}
+fb
+{% endmacro %}
+
+{% macro icon_whatsapp(size=6) %}
+wa
+{% endmacro %}
+
+{% macro icon_twitter(size=6) %}
+t
+{% endmacro %}
+
+{% macro icon_search(size=6) %}
+<svg class="h-{{size}} w-{{size}}" viewBox="0 0 20 20"><path d="M17.545 15.467l-3.779-3.779a6.15 6.15 0 0 0 .898-3.21c0-3.417-2.961-6.377-6.378-6.377A6.185 6.185 0 0 0 2.1 8.287c0 3.416 2.961 6.377 6.377 6.377a6.15 6.15 0 0 0 3.115-.844l3.799 3.801a.953.953 0 0 0 1.346 0l.943-.943c.371-.371.236-.84-.135-1.211zM4.004 8.287a4.282 4.282 0 0 1 4.282-4.283c2.366 0 4.474 2.107 4.474 4.474a4.284 4.284 0 0 1-4.283 4.283c-2.366-.001-4.473-2.109-4.473-4.474z"/></svg>
+{% endmacro %}
+
+{% macro icon_certificate(size=6) %}
+<svg class="h-{{size}} w-{{size}}" viewBox="0 0 24 24"><path d="M4,3C2.89,3 2,3.89 2,5V15A2,2 0 0,0 4,17H12V22L15,19L18,22V17H20A2,2 0 0,0 22,15V8L22,6V5A2,2 0 0,0 20,3H16V3H4M12,5L15,7L18,5V8.5L21,10L18,11.5V15L15,13L12,15V11.5L9,10L12,8.5V5M4,5H9V7H4V5M4,9H7V11H4V9M4,13H9V15H4V13Z" /></svg>
+{% endmacro %}
+
+{% macro icon_hardhat(size=5) %}
+<svg class="h-{{size}} w-{{size}}" viewBox="0 0 24 24"><path d="M12,15C7.58,15 4,16.79 4,19V21H20V19C20,16.79 16.42,15 12,15M8,9A4,4 0 0,0 12,13A4,4 0 0,0 16,9M11.5,2C11.2,2 11,2.21 11,2.5V5.5H10V3C10,3 7.75,3.86 7.75,6.75C7.75,6.75 7,6.89 7,8H17C16.95,6.89 16.25,6.75 16.25,6.75C16.25,3.86 14,3 14,3V5.5H13V2.5C13,2.21 12.81,2 12.5,2H11.5Z" /></svg>
+{% endmacro %}
+
+{% macro icon_teach(size=6) %}
+<svg class="h-{[size}} w-{{size}}" viewBox="0 0 24 24"><path d="M20,17A2,2 0 0,0 22,15V4A2,2 0 0,0 20,2H9.46C9.81,2.61 10,3.3 10,4H20V15H11V17M15,7V9H9V22H7V16H5V22H3V14H1.5V9A2,2 0 0,1 3.5,7H15M8,4A2,2 0 0,1 6,6A2,2 0 0,1 4,4A2,2 0 0,1 6,2A2,2 0 0,1 8,4Z" /></svg>
+{% endmacro %}
+
+{% macro icon_bars(size=6) %}
+<svg class="h-{{size}} w-{{size}}" viewBox="0 0 20 20"><path d="M16.4 9H3.6c-.552 0-.6.447-.6 1 0 .553.048 1 .6 1h12.8c.552 0 .6-.447.6-1 0-.553-.048-1-.6-1zm0 4H3.6c-.552 0-.6.447-.6 1 0 .553.048 1 .6 1h12.8c.552 0 .6-.447.6-1 0-.553-.048-1-.6-1zM3.6 7h12.8c.552 0 .6-.447.6-1 0-.553-.048-1-.6-1H3.6c-.552 0-.6.447-.6 1 0 .553.048 1 .6 1z"/></svg>	
+{% endmacro %}
+
+{% macro icon_settings(size=5) %}
+<svg class="h-{{size}} w-{{size}}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.783 12c0-1.049.646-1.875 1.617-2.443a8.932 8.932 0 0 0-.692-1.672c-1.089.285-1.97-.141-2.711-.883-.741-.74-.968-1.621-.683-2.711a8.732 8.732 0 0 0-1.672-.691c-.568.97-1.595 1.615-2.642 1.615-1.048 0-2.074-.645-2.643-1.615-.58.172-1.14.403-1.671.691.285 1.09.059 1.971-.684 2.711-.74.742-1.621 1.168-2.711.883A8.797 8.797 0 0 0 3.6 9.557c.97.568 1.615 1.394 1.615 2.443 0 1.047-.645 2.074-1.615 2.643.173.58.404 1.14.691 1.672 1.09-.285 1.971-.059 2.711.682.741.742.969 1.623.684 2.711.532.288 1.092.52 1.672.693.568-.973 1.595-1.617 2.643-1.617 1.047 0 2.074.645 2.643 1.617a8.963 8.963 0 0 0 1.672-.693c-.285-1.088-.059-1.969.683-2.711.741-.74 1.622-1.166 2.711-.883.287-.532.52-1.092.692-1.672-.973-.569-1.619-1.395-1.619-2.442zM12 15.652a3.653 3.653 0 1 1 0-7.306 3.653 3.653 0 0 1 0 7.306z" fill-rule="nonzero"/></svg> 
+{% endmacro %}
+
+{% macro icon_videos(size=5) %}
+<svg class="h-{{size}} w-{{size}}" viewBox="0 0 24 24"><path d="M2.5,4.5H21.5C22.34,4.5 23,5.15 23,6V17.5C23,18.35 22.34,19 21.5,19H2.5C1.65,19 1,18.35 1,17.5V6C1,5.15 1.65,4.5 2.5,4.5M9.71,8.5V15L15.42,11.7L9.71,8.5M17.25,21H6.65C6.35,21 6.15,20.8 6.15,20.5C6.15,20.2 6.35,20 6.65,20H17.35C17.65,20 17.85,20.2 17.85,20.5C17.85,20.8 17.55,21 17.25,21Z" /></svg>
+{% endmacro %}
+
+{% macro icon_blog(size=5) %}
+<svg class="h-{{size}} w-{{size}}" viewBox="0 0 24 24"><path d="M15.5,17H14L12,9.5L10,17H8.5L6.1,7H7.8L9.34,14.5L11.3,7H12.7L14.67,14.5L16.2,7H17.9M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3Z" /></svg>
+{% endmacro %}
+
+{% macro icon_links(size=5) %}
+<svg class="h-{{size}} w-{{size}}" viewBox="0 0 24 24"><path d="M10.59,13.41C11,13.8 11,14.44 10.59,14.83C10.2,15.22 9.56,15.22 9.17,14.83C7.22,12.88 7.22,9.71 9.17,7.76V7.76L12.71,4.22C14.66,2.27 17.83,2.27 19.78,4.22C21.73,6.17 21.73,9.34 19.78,11.29L18.29,12.78C18.3,11.96 18.17,11.14 17.89,10.36L18.36,9.88C19.54,8.71 19.54,6.81 18.36,5.64C17.19,4.46 15.29,4.46 14.12,5.64L10.59,9.17C9.41,10.34 9.41,12.24 10.59,13.41M13.41,9.17C13.8,8.78 14.44,8.78 14.83,9.17C16.78,11.12 16.78,14.29 14.83,16.24V16.24L11.29,19.78C9.34,21.73 6.17,21.73 4.22,19.78C2.27,17.83 2.27,14.66 4.22,12.71L5.71,11.22C5.7,12.04 5.83,12.86 6.11,13.65L5.64,14.12C4.46,15.29 4.46,17.19 5.64,18.36C6.81,19.54 8.71,19.54 9.88,18.36L13.41,14.83C14.59,13.66 14.59,11.76 13.41,10.59C13,10.2 13,9.56 13.41,9.17Z" /></svg>
+{% endmacro %}
+
+{% macro icon_pages(size=5) %}
+<svg class="h-{{size}} w-{{size}}" viewBox="0 0 24 24"><path d="M19,2L14,6.5V17.5L19,13V2M6.5,5C4.55,5 2.45,5.4 1,6.5V21.16C1,21.41 1.25,21.66 1.5,21.66C1.6,21.66 1.65,21.59 1.75,21.59C3.1,20.94 5.05,20.5 6.5,20.5C8.45,20.5 10.55,20.9 12,22C13.35,21.15 15.8,20.5 17.5,20.5C19.15,20.5 20.85,20.81 22.25,21.56C22.35,21.61 22.4,21.59 22.5,21.59C22.75,21.59 23,21.34 23,21.09V6.5C22.4,6.05 21.75,5.75 21,5.5V7.5L21,13V19C19.9,18.65 18.7,18.5 17.5,18.5C15.8,18.5 13.35,19.15 12,20V13L12,8.5V6.5C10.55,5.4 8.45,5 6.5,5V5Z" /></svg>
+{% endmacro %}
+
+{% macro icon_courses(size=5) %}
+<svg class="h-{{size}} w-{{size}}" viewBox="0 0 24 24"><path d="M12,3L1,9L12,15L21,10.09V17H23V9M5,13.18V17.18L12,21L19,17.18V13.18L12,17L5,13.18Z" /></svg>
+{% endmacro %}
+
+{% macro icon_dashboard(size=5) %}
+<svg class="h-{{size}} w-{{size}}" viewBox="0 0 24 24"><path d="M13,3V9H21V3M13,21H21V11H13M3,21H11V15H3M3,13H11V3H3V13Z" /></svg>
+{% endmacro %}
+
+{% macro icon_edit(size=5) %}
+<svg class="h-{{size}} w-{{size}}"  viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+{% endmacro %}
+
+{% macro icon_trash(size=5) %}
+<svg class="h-{{size}} w-{{size}}"  viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/><path d="M0 0h24v24H0z" fill="none"/></svg>	
+{% endmacro %}
+
+{% macro icon_plus(size=5) %}
+<svg class="h-{{size}} w-{{size}}"  viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/><path d="M0 0h24v24H0z" fill="none"/></svg>	
+{% endmacro %}

@@ -1,0 +1,368 @@
+{% extends 'base.html' %}
+{% import 'macros.html' as m %}
+
+{% block body_content %}
+	  {% include 'nav.html' %}
+   
+    <main>
+      <div
+        class="relative  pt-16 pb-32 flex content-center items-center justify-center"
+        style="min-height: 75vh;"
+      >
+        <div
+          class="absolute top-0 w-full h-full bg-center bg-cover"
+	  style='background-image: url({{HERO_IMAGE}});'
+        >
+          <span
+            id="blackOverlay"
+            class="w-full h-full absolute "
+          ></span>
+        </div>
+		<div class="container relative mx-auto"></div>
+        <div
+          class="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden"
+          style="height: 70px; transform: translateZ(0px);"
+        >
+          <svg
+            class="absolute bottom-0 overflow-hidden"
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="none"
+            version="1.1"
+            viewBox="0 0 2560 100"
+            x="0"
+            y="0"
+          >
+            <polygon
+              class="text-gray-300 fill-current"
+              points="2560 0 2560 100 0 100"
+            ></polygon>
+          </svg>
+        </div>
+      </div>
+      <section class="pb-20 bg-gray-300 -mt-24">
+        <div class="container mx-auto px-4">
+          <div class="flex flex-wrap">
+            <div class="lg:pt-12 pt-6 w-full md:w-4/12 px-4 text-center">
+              <div
+                class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg"
+              >
+                <div class="px-4 py-5 flex-auto">
+                  <div
+                    class="text-white p-3 text-center inline-flex items-center justify-center w-14 h-14 mb-5 shadow-lg rounded-full bg-red-400"
+                  >
+		  {{m.icon_teach(size=12) }}
+                  </div>
+                  <h6 class="text-xl font-semibold">Hands-on Training</h6>
+                  <p class="mt-2 mb-4 text-gray-600">
+                	We offer  comprehensive training  at ground one, Kireka from hands-on training, management and mentorship
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="w-full md:w-4/12 px-4 text-center">
+              <div
+                class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg"
+              >
+                <div class="px-4 py-5 flex-auto">
+                  <div
+                    class="text-white p-3 text-center inline-flex items-center justify-center w-14 h-14 mb-5 shadow-lg rounded-full bg-blue-400"
+                  >
+			{{m.icon_certificate(size=12) }}                    
+                  </div>
+                  <h6 class="text-xl font-semibold">Accredited Qualifications</h6>
+                  <p class="mt-2 mb-4 text-gray-600">
+                    Recive nationaly accredited qualifications and short courses to improve skills, competency levels and confidence.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="pt-6 w-full md:w-4/12 px-4 text-center">
+              <div
+                class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg"
+              >
+                <div class="px-4 py-5 flex-auto">
+                  <div
+                    class="text-white p-3 text-center inline-flex items-center justify-center w-14 h-14 mb-5 shadow-lg rounded-full bg-green-400"
+                  >
+		  {{m.icon_hardhat(size=12) }}
+                  </div>
+                  <h6 class="text-xl font-semibold">Skills Focused</h6>
+                  <p class="mt-2 mb-4 text-gray-600">
+                     Equip Youth Africa recognises the unique qualities of all individuals and assists each client in achieving their full career potential.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-wrap items-center mt-32">
+            <div class="w-full md:w-5/12 px-4 mr-auto ml-auto">
+              <!--div
+                class="text-gray-600 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-gray-100"
+              >
+	      {{m.icon_courses(size=16)}}
+              </div-->
+              <h3 class="text-3xl mb-2 font-semibold leading-normal">
+                Welcome to Equip Youth Africa Skills Training
+              </h3>
+              <p
+                class="text-lg font-light leading-relaxed mt-4 mb-4 text-gray-700"
+              >
+                We provide Vocational Training Services, partner with individuals, communities, schools and businesses to deliver specialist qualifications and short courses to empower youth and equip them with industry relevant skills.
+              </p>
+              <p
+                class="text-lg font-light leading-relaxed mt-0 mb-4 text-gray-700"
+              >
+                Our study plan will perfectly match your needs, lifestyle, and goals. Even if it’s been years since you last did training of any kind, we can help. Our facilities, compassionate team, and fully equipted centre will help you feel completely at ease.
+              </p>
+              <a
+		      href="{{url_for('.courses')}}"
+                class="font-bold text-blue-500 hover:text-blue-600 mt-8 mb-8"
+                >Check our courses!</a
+              >
+            </div>
+            <div class="w-full md:w-4/12 px-4 mr-auto ml-auto">
+              <div
+                class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg bg-green-600"
+              >
+                <img
+			alt="{{g.application.NAME}}"
+		  src="{{LANDING_IMAGE_1}}"
+                  class="w-full align-middle rounded-t-lg"
+                />
+                <blockquote class="relative p-8 mb-4">
+                  <svg
+                    preserveAspectRatio="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 583 95"
+                    class="absolute left-0 w-full block"
+                    style="height: 95px; top: -94px;"
+                  >
+                    <polygon
+                      points="-30,95 583,95 583,65"
+                      class="text-green-600 fill-current"
+                    ></polygon>
+                  </svg>
+                  <h4 class="text-xl font-bold text-white">
+                 We can take you where you want to go!
+                  </h4>
+                  <p class="text-md font-light mt-2 text-white">
+		  Whether you’re looking to move straight into the workforce, or to take an initial step in your tertiary education. Enrol now and let us help you take that next step in your career journey.
+                  </p>
+                </blockquote>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="relative py-20">
+        <div
+          class="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
+          style="height: 80px; transform: translateZ(0px);"
+        >
+          <svg
+            class="absolute bottom-0 overflow-hidden"
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="none"
+            version="1.1"
+            viewBox="0 0 2560 100"
+            x="0"
+            y="0"
+          >
+            <polygon
+              class="text-white fill-current"
+              points="2560 0 2560 100 0 100"
+            ></polygon>
+          </svg>
+        </div>
+        <div class="container mx-auto px-4">
+          <div class="items-center flex flex-wrap">
+            <div class="w-full md:w-5/12 ml-auto mr-auto px-4">
+              <img
+		      alt="{{g.application.NAME}}"
+                class="max-w-full rounded-lg shadow-lg"
+		src="{{LANDING_IMAGE_2}}"
+              />
+            </div>
+            <div class="w-full md:w-7/12 ml-auto mr-auto px-4">
+              <div class="md:pr-12">
+               
+		      <h3 class="text-3xl font-semibold">{{LANDING_HEADING_2}}</h3>
+		      <p class="mt-4 text-lg leading-relaxed text-gray-600">{{LANDING_TEXT_2}}</p>
+                <ul class="list-none mt-6">
+			{% for c in g.application.TOP_COURSES %}
+		<li class="py-2">
+                    <div class="flex items-center">
+                      <div>
+                        <span
+                          class="text-xs font-semibold inline-block py-1 px-2 mr-2 uppercase rounded-full text-pink-600 bg-pink-200 mr-3"
+                          >
+			  {{m.icon_teach(size=4)}}
+			</span>
+                      </div>
+                      <div>
+                        <h4 class="">
+				<a class="text-blue-500 hover:text-blue-600" href="{{url_for('.course', slug=c.slug)}}">{{c.title}}</a>
+                        </h4>
+                      </div>
+                    </div>
+                  </li>
+		  {% endfor %}
+                  </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="pt-6 pb-32">
+        <div class="container mx-auto px-4">
+          <div class="flex flex-wrap justify-center text-center mb-24">
+            <div class="w-full lg:w-6/12 px-4">
+		    <h2 class="text-4xl font-semibold">{{LANDING_HEADING_3}}</h2>
+		    <p class="text-lg leading-relaxed m-4 text-gray-600">{{LANDING_TEXT_3}}</p>
+            </div>
+          </div>
+	  <!-- Videos -->
+	  <div class="flex flex-wrap">
+		  {% for v in videos %}
+		  <div class="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
+			  <iframe width="420" height="315"                                                                                                       src="https://www.youtube.com/embed/{{v.youtube_id}}">  </iframe>
+		  </div>
+		  {% endfor %}
+	  </div>
+	  <!-- end video -->
+	   <div class="flex flex-wrap">
+		  {% for c in g.application.TOP_COURSES %}
+		<div class="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
+              <div class="px-6">
+		      {% if c.image %}
+                <img
+			alt="{{c.title}}"
+		  src="{{c.imgsrc}}"
+                  class="shadow-lg rounded-full max-w-full mx-auto"
+                  style="max-width: 120px;"
+                />
+		{% endif %}
+                <div class="pt-6 text-center">
+			<h5 class="text-xl font-bold">
+				<a href="{{url_for('.course', slug=c.slug)}}"
+					class="text-blue-500 hover:text-blue-600">{{c.title}}</a>
+			</h5>
+                  <p class="mt-1 text-sm text-gray-500 uppercase font-semibold">
+		  {{c.body|truncate(100)}}
+                  </p>
+                </div>
+              </div>
+            </div>
+	    {% endfor %}
+             </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="pb-20 relative block bg-orange-500">
+        <div
+          class="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
+          style="height: 80px; transform: translateZ(0px);"
+        >
+          <svg
+            class="absolute bottom-0 overflow-hidden"
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="none"
+            version="1.1"
+            viewBox="0 0 2560 100"
+            x="0"
+            y="0"
+          >
+            <polygon
+              class="text-orange-500 fill-current"
+              points="2560 0 2560 100 0 100"
+            ></polygon>
+          </svg>
+        </div>
+        <div class="container mx-auto px-4 lg:pt-24 lg:pb-64">
+          <div class="flex flex-wrap text-center justify-center">
+            <div class="w-full lg:w-6/12 px-4">
+		    <h2 class="text-4xl font-semibold text-white">{{LANDING_HEADING_4}}</h2>
+              <p class="text-lg leading-relaxed mt-4 mb-4 text-white pb-16"> {{LANDING_TEXT_4}} </p>
+            </div>
+          </div>
+     </section>
+      <form method="post"  role="form" novalidate>
+	      {{form.hidden_tag()}}
+      <section class="relative block py-24 lg:pt-0 bg-green-500">
+        <div class="container mx-auto px-4">
+          <div class="flex flex-wrap justify-center lg:-mt-64 -mt-48">
+            <div class="w-full lg:w-6/12 px-4">
+              <div
+                class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-gray-300"
+              >
+                <div class="flex-auto p-5 lg:p-10">
+                  <h4 class="text-2xl font-semibold">Want to contact us?</h4>
+                  <p class="leading-relaxed mt-1 mb-4 text-gray-600">
+                    Complete this form and we will get back to you.
+                  </p>
+		  {{m.form_errors(form)}}
+                  <div class="relative w-full mb-3 mt-8">
+                    <label
+                      class="block uppercase text-gray-700 text-xs font-bold mb-2"
+                      for="full-name"
+                      >Full Name</label
+                    ><input
+                      type="text"
+                      class="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full"
+                      placeholder="Full Name"
+		      name="name"
+                      style="transition: all 0.15s ease 0s;"
+                    />
+		    {{m.field_extras(form.name)}}
+                  </div>
+                  <div class="relative w-full mb-3">
+                    <label
+                      class="block uppercase text-gray-700 text-xs font-bold mb-2"
+                      for="email"
+                      >Email</label
+                    ><input
+                      type="text"
+                      class="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full"
+                      placeholder="Email"
+		      name="email"
+                      style="transition: all 0.15s ease 0s;"
+                    />
+		    {{m.field_extras(form.email)}}
+                  </div>
+                  <div class="relative w-full mb-3">
+                    <label
+                      class="block uppercase text-gray-700 text-xs font-bold mb-2"
+                      for="message"
+                      >Message</label
+                    ><textarea
+                      rows="4"
+		      name="text"
+                      cols="80"
+                      class="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full"
+                      placeholder="Type a message..."
+                    ></textarea>
+		    {{m.field_extras(form.text)}}
+                  </div>
+                  <div class="text-center mt-6">
+                    <button
+                      class="bg-gray-900 text-white hover:bg-gray-700 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
+                      type="submit"
+                      style="transition: all 0.15s ease 0s;"
+                    >
+                      Send Message
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      </form>
+    </main>
+    
+
+    {% include 'footer.html' %}
+
+{% endblock %}

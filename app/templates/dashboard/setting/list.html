@@ -1,0 +1,51 @@
+{% extends 'dashboard/layout.html' %}
+{% import 'macros.html' as m %}
+
+{% set active_page = url_for('.setting_list') %}
+
+{% block title %} | Settings {% endblock %}
+
+{% block page_content %}
+<!-- Header -->
+<div class="dashboard-header">
+	<h2 class="flex-1">Settings</h2>
+	<a class="btn-sm btn-green inline-flex items-center" href="{{url_for('.setting_action')}}">
+	{{m.icon_plus(size=4)}} <span class="ml-1">New</span>
+	</a>
+</div>
+
+<table class="dashboard-table">
+		<thead>
+			<th>Name</th>
+			<th class="text-left">Value</th>
+			<!--th class="text-center">Modified</th-->
+			<th></th>
+		</thead>
+		<tbody>
+			{% for s in settings %}
+			<tr>
+				<td>{{s.key}}</td>
+				<td class="text-sm text-gray-500 italic hover:text-green-600">
+					{% if s.image %}
+					<img src="{{s.imgsrc}}" alt="{{s.key}}" class="w-10">
+					{% else %}
+					{{s.value|truncate(50)}}
+					{% endif %}
+				</td>
+				<!--td class="text-center">{{s.modified| pretty_date}}</td-->
+				<td class="text-right">
+					<a class="inline-flex text-blue-500 mr-2"
+					   href="{{url_for('.setting_action', uid=s.uid)}}">
+						{{m.icon_edit()}}
+					</a>
+					<a class="inline-flex text-red-500" 
+					   href="{{url_for('.setting_delete', uid=s.uid)}}">
+						{{m.icon_trash()}}
+					</a>
+				</td>
+			</tr>
+		{% endfor %}
+		</tbody>
+	</table>
+
+{% endblock %}

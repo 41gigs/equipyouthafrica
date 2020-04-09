@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+
+{% block page_content %}
+<div class="container mx-auto px-6 py-8">
+      <h3 class="flex flex-col border-b text-gray-700 text-4xl font-bold my-8">Gallery</h3>
+
+      <div class="flex flex-wrap">
+	{% for g in gallery %}
+	{% if g.image %}
+		<div class="w-full md:w-1/3">
+			<img class="h-64" src="{{g.imgsrc}}" alt="{{g.caption}}">
+			<p class="text-gray-600 italic">{{g.caption}}</p>
+		</div>
+		{% endif %}
+	{% else %}
+	<p class="text-xl text-gray-600">Comming soon! Our team is working on more great content for you!</p>
+	{% endfor %}
+      </div>
+ </div>
+				
+{% endblock %}	
+

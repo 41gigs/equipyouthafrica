@@ -1,0 +1,55 @@
+{% extends 'layout.html' %}
+
+{% block page_content %}
+<div class="container mx-auto px-6 py-8">
+      <h3 class="flex flex-col border-b text-gray-700 text-4xl font-bold my-8">Fees Structure</h3>
+      <p class="text-xl mb-4">With realization of lack of enough skilled human resource for Industrial development and poverty in Uganda and Africa at large especially among Youth, Equip Youth Africa in conjuction with NNEK Technicals Uganda has set out to offer One year hands on Training in below mentioned Vocational Skills to youth starting from P.7, S.4, S.6 and above. </p>
+
+      <table class="w-full text-xl  mb-4">
+	      <!--thead class="bg-gray-200">
+			<th class="px-5 py-2 text-left">Course</th>
+			<th class="px-5 py-2 text-right">Fees per Term (Ugx)</th>
+	      </thead-->
+	      {% for c in courses %}
+	      <tr class=" {{loop.cycle('', 'bg-green-100')}}" >
+		<td class="px-5 py-2 text-left border-b text-base"><a href="{{url_for('.course', slug=c.slug)}}">{{c.title}}</a></td>
+		<td class="px-5 py-2 font-bold border-b">{% if c.fees %} {{c.fees}} /={% endif %}</td>
+      	</tr>
+	{% endfor %}
+      </table>
+      <p class="text-sm text-gray-600 font-bold">Fees in Uganda Shillings</p>
+
+
+      <h2 class="text-xl font-bold mb-4">Other Requirements</h2> 
+      <table class="w-full text-xl"> 
+      	<tr>
+      		<td class="px-5 py-2 text-left border-b text-base" >T-shirt (All trainees)</td>
+		<td class="px-5 py-2 border-b font-bold"> 30,000/= </td>
+      	</tr>
+	<tr class="bg-green-100">
+		<td class="px-5 py-2 text-left border-b text-base" >Field study/Equipment fees</td>
+		<td class="px-5 py-2  border-b font-bold" >60,000/=</td>
+	</tr>
+	<tr>
+		<td class="px-5 py-2 text-left border-b text-base" >Overalls (Engineering courses) </td>
+		<td class="px-5 py-2 border-b font-bold" > 40,000/=</td>
+	</tr>
+      </table>
+                                
+
+      <h2 class="text-xl font-bold"> Registration Requirements </h2>
+      <p class="text-xl mb-4">Payment of 50% of total fees on admission photocopies of academic papers and 3 passport size photographs for registration.</p>
+
+      <p class="text-xl mb-4">Upon Course completion all Trainees are assessed and certified by Directorate of Industrial Training. This enables those who want to continue in the same kind of training continue up to level 4.</p>
+
+
+      <p class="text-xl mb-4">Yours in service,<br>
+
+      NIMWESIGA  EDSON</p>
+
+      <p class="text-xl">Director</p>
+
+</div>
+				
+{% endblock %}	
+

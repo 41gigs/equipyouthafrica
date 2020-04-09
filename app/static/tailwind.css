@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+svg {
+	@apply .fill-current
+}
+
+.field {
+	@apply .px-3 .py-3 .text-gray-700 .bg-white .rounded .text-sm .shadow .w-full 
+}
+
+.field:focus {
+	@apply .shadow-outline .outline-none
+}
+
+.field-label {
+	@apply .uppercase .text-gray-700 .text-xs .font-bold .mb-2 
+}
+
+
+.markdown h2 {
+	@apply .py-8  .leading-loose .font-bold 
+}
+
+.markdown ul {
+	@apply .px-8 .list-disc
+}
+.dashboard-table {
+	@apply .w-full .border-collapse .mb-8 .rounded .bg-white
+}
+
+.dashboard-table th {
+	@apply .px-6 .bg-gray-100 .text-gray-600 .border .border-solid .border-gray-200 .py-3 .text-sm .uppercase .border-b-0 .whitespace-no-wrap .font-semibold  
+}
+
+.dashboard-table tr {
+
+}
+
+.dashboard-table tr:hover {
+	@apply .bg-green-100 .text-green-700
+}
+
+.dashboard-table td {
+	@apply .px-6 .text-sm .whitespace-no-wrap .p-4 .border-b
+
+}
+
+.dashboard-header {
+	@apply .flex .items-center .px-4 .py-2 .bg-green-200 .rounded .shadow .mb-6 
+}
+
+.dashboard-header h2 {
+	@apply .text-green-700 .font-bold .text-lg 
+}
+.btn-default {
+	@apply .font-bold .rounded .shadow
+}
+
+.btn-sm {
+	@apply .px-3 .py-2 .btn-default .text-xs
+}
+
+.btn {
+	@apply .px-6 .py-3 .btn-default 
+}
+
+.btn-lg {
+	@apply .px-6 .py-3 .btn-default
+}
+
+.btn-green {
+	@apply .bg-green-500 .text-white
+}
+
+.btn-green:hover {
+	@apply .bg-green-600 
+}
+
+.btn-dark {
+	@apply .bg-gray-900 .text-white .shadow
+}
+
+.btn-dark:hover {
+	@apply .bg-gray-700 .shadow-lg
+}

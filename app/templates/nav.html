@@ -1,0 +1,83 @@
+{% set navigation = [
+	('About Us', url_for('.page', slug='about-us')),
+	('Apply Now', url_for('.page', slug='apply-now')),
+	('Fees', url_for('.fees')),
+	('Gallery', url_for('.gallery'))
+
+	] %}
+	<!-- Flash -->
+	{% with messages = get_flashed_messages(with_categories=True) %}  
+{% if messages %}
+{% for category, message in messages %}                                                                                    <div class="w-3/4 flex items-center mx-auto bg-{{category}}-500 text-white rounded px-3 py-2 mb-5">
+	{% if category == 'blue' %}
+		<svg class="fill-current h-5 w-5 mr-2" viewBox="0 0 20 20"><path d="M8.294 16.998c-.435 0-.847-.203-1.111-.553L3.61 11.724a1.392 1.392 0 0 1 .27-1.951 1.392 1.392 0 0 1 1.953.27l2.351 3.104 5.911-9.492a1.396 1.396 0 0 1 1.921-.445c.653.406.854 1.266.446 1.92L9.478 16.34a1.39 1.39 0 0 1-1.12.656c-.022.002-.042.002-.064.002z"/></svg>
+	{% else %}
+		<svg class="fill-current h-5 w-5 mr-2" viewBox="0 0 20 20"><path d="M19.511 17.98L10.604 1.348a.697.697 0 0 0-1.208 0L.49 17.98a.675.675 0 0 0 .005.68c.125.211.352.34.598.34h17.814a.694.694 0 0 0 .598-.34.677.677 0 0 0 .006-.68zM11 17H9v-2h2v2zm0-3.5H9V7h2v6.5z"/></svg>
+	{% endif %}
+
+	<p class="font-bold">{{message}}</p>
+</div>
+{% endfor %}
+{% endif %}        
+{% endwith %}	
+<!--Nav-->
+	<nav class="bg-green-600 p-4 mt-0 w-full">
+        <div class="mx-auto flex items-center">
+		    <div class="flex-1 text-white font-extrabold">
+			    <a class="inline-flex items-center text-white text-base no-underline hover:text-white hover:no-underline" href="{{url_for('.root')}}"> 
+				    <img src="{{g.application.LOGO_LIGHT}}" class="h-10" alt="{{g.application.NAME}}">
+				    <span class="hidden w-0 md:w-auto md:block pl-1">{{g.application.NAME}}</span>
+				</a>
+            </div>
+			<div class="flex pl-4 text-sm">
+				<ul class="list-reset flex justify-between flex-1 md:flex-none items-center">
+				  {% for label, url in navigation %} 
+				  <li class="mr-2">
+					  <a class="inline-block {% if url == active_page %} border-b-2 {% endif %}  text-white no-underline font-bold hover:text-underline py-2 px-2" href="{{url}}">{{label}}</a>
+				  </li>
+				  {% endfor %}
+				  {% if current_user.is_authenticated %}
+                     
+	       <li class="mr-2">
+                                          <a class="btn-sm btn-dark" href="{{url_for('auth.logout')}}">Logout</a>
+                                  </li>
+                                 
+                                  {% else %}
+                                  <li class="mr-2">
+                                          <a class="btn-sm btn-dark" href="{{url_for('auth.login')}}">Login</a>
+                                  </li>
+                                  {% endif %}
+ 
+				</ul>
+			</div>
+        </div>
+	</nav>
+	
+	<!--slide in nav-->
+	<div id="header" class="bg-white fixed w-full z-10 top-0 hidden animated" style="opacity: .95;">
+		<div class="bg-white">
+			<div class="flex flex-wrap items-center content-center">
+				<div class="flex w-1/2 justify-start text-white font-extrabold">
+					<a class="inline-flex items-center text-green-700 no-underline hover:text-gray-900 hover:no-underline pl-2" href="{{url_for('.root')}}">
+				  <img src="{{g.application.LOGO_DARK}}" class="h-10" alt="{{g.application.NAME}}">
+		<span class="hidden w-0 md:w-auto md:block pl-1">{{g.settings.APPLICATION_NAME}}</span>
+					</a>
+				</div>
+				<div class="flex w-1/2 justify-end content-center">
+					<ul class="flex list-reset p-4 h-14">
+						{% for label, url in navigation %}
+						<li class="mr-2">
+					 <a class="inline-block text-green-600 {% if url == active_page %} border-green-600 border-b-2 {% endif %}   no-underline font-bold hover:text-underline py-2 px-2" href="{{url}}">{{label}}</a>
+	</li>
+						{% endfor %}
+			
+					</ul>			
+			 	</div>
+			</div>
+			
+		</div>
+		<!--Progress bar-->
+		<div id="progress" class="h-1 bg-white shadow" style="background:linear-gradient(to right, #4dc0b5 var(--scroll), transparent 0);"></div>
+    </div>
+
+	

@@ -1,0 +1,44 @@
+{% extends 'dashboard/layout.html' %}
+{% import 'macros.html' as m %}
+
+{% set active_page = url_for('.subject_list') %}
+
+{% block title %} | {% if subject %} New {% else %} Edit {% endif %} Course {% endblock %}
+
+{% block page_content %}
+<div class="dashboard-header">
+	<h2 class="flex-1">{% if subject %} Edit {% else %} New {% endif %} Course</h2>
+</div>
+
+
+{{m.form_errors(form)}}
+
+<form method="post" enctype="multipart/form-data" role="form" novalidate class="bg-gray-300 p-5 rounded">
+	{{form.hidden_tag()}}
+
+	{{m.input(form.title)}}
+	{{m.input(form.body, rows=20)}}
+	{{m.input(form.fees)}}
+	{{m.input(form.meta_description)}}
+	{% if subject.image %}
+		<img src="{{subject.imgsrc}}" alt="{{subject.title}}" class="w-64 shadow">
+
+	
+	{% elif subject.image_external %} 
+	<img src="{{subject.image_external}}" class="w-64 shadow" alt="{{subject.title}}">
+	{% endif %}
+
+	{% if subject.image or subject.image_external %}
+		<span class="text-gray-500 mb-8 text-sm">Current Image</span>
+	{% endif %}
+
+	{{m.file(form.image)}}
+	{{m.input(form.image_external)}}
+	{{m.input(form.image_caption)}}
+	{{m.input(form.priority)}}
+
+	<button class="btn-lg btn-dark">Save</button>
+
+</form>
+{% endblock %}
+

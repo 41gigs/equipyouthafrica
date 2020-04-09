@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+
+{% block page_content %}
+<div class="container mx-auto px-6 py-8">
+      <h3 class="flex flex-col border-b text-gray-700 text-4xl font-bold my-8">Blog</h3>
+      {% for p in posts %}
+      <div class="flex flex-col md:flex-row items-center mt-4 mb-16">
+	      {% if p.image %}
+	      <img src="{{p.imgsrc}}" class="w-5/12">
+	      {% endif %}
+        <div class="ml-8">
+		<h4 class="text-2xl font-bold mb-4">
+			<a class="text-blue-500 hover:text-blue-600"
+				href="{{url_for('.post', slug=p.slug)}}">{{p.title}}</a></h4>
+		<div class="text-lg mb-4">{{p.body|truncate(200)}}</div>
+		
+			<a class="px-4 py-2 text-sm  border-green-500 border rounded-full hover:bg-green-500 hover:text-white" href="">Read more</a>
+
+	</div>
+      </div>
+      {% else %}
+      <p class="text-lg text-gray-600">Coming soon! Our team is preparing more content for you.</p>
+	{% endfor %}
+</div>
+				
+{% endblock %}	
+

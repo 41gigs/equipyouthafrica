@@ -1,0 +1,20 @@
+{% extends 'dashboard/layout.html' %}
+{% import 'macros.html' as m %}
+
+{% set active_page = url_for('.link_list') %}
+{% block title %} | {% if link %} Edit {% else %} New {% endif %} Link {% endblock %}
+
+
+{% block page_content %}
+<div class="dashboard-header">
+	<h2 class="flex-1">{% if post %} Edit {% else %} New {% endif %} Link</h2>
+</div>
+{{m.form_errors(form)}}
+<form method="post" enctype="multipart/form-data" role="form" novalidate class="bg-white px-4 py-2 rounded">
+	{{form.hidden_tag()}}
+	{{m.input(form.title)}}
+	{{m.input(form.url)}}
+	<button class="btn-lg btn-green">Save</button>
+</form>
+{% endblock %}
+

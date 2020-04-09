@@ -1,0 +1,101 @@
+{% set navigation = [
+	('Dashboard', url_for('.root')),
+	('Courses', url_for('.subject_list')),
+	('Pages', url_for('.page_list')),
+	('Blog', url_for('.post_list')),
+	('Gallery', url_for('.gallery_list')),
+	('Messages', url_for('.message_list')),
+	
+	('Videos', url_for('.video_list')),
+	('Settings', url_for('.setting_list'))
+	] %}
+<ul class="md:flex-col md:min-w-full flex flex-col list-none">
+	{% for label, url in navigation %}
+		{% if url %}
+		<li class="items-center py-2">
+				<a href="{{url}}"
+				   class="{% if url == active_page %}border-pink-500 border-r-2  text-pink-500 hover:text-pink-600 {% else %} text-gray-800 hover:text-gray-600 {% endif %} uppercase  font-bold block text-sm inline-flex w-full">
+					{% if label == 'Dashboard' %} 
+						{{m.icon_dashboard()}}
+					{% elif label == 'Courses' %}
+						{{m.icon_courses() }}
+					{% elif label == 'Pages' %}
+						{{m.icon_pages() }}
+					{% elif label == 'Navigation' %}
+						{{m.icon_links()}}
+					{% elif label == 'Videos' %}
+						{{m.icon_videos()}}
+					{% elif label == 'Blog' %}
+						{{m.icon_blog()}}
+					{% elif label == 'Settings' %}
+						{{m.icon_settings()}}
+					{% endif %} 
+					<span class="ml-1">{{label}}</span>
+				</a>
+			</li>
+		{% else %}
+			No URL
+		{% endif %}
+	{% endfor %}
+                    </ul>
+            <!--hr class="my-4 md:min-w-full" />
+            <h6
+              class="md:min-w-full text-gray-600 text-xs uppercase font-bold block pt-1 pb-4 no-underline"
+            >
+              Documentation
+            </h6>
+            <ul
+              class="md:flex-col md:min-w-full flex flex-col list-none md:mb-4"
+            >
+              <li class="inline-flex">
+                <a
+                  class="text-gray-800 hover:text-gray-600 text-sm block mb-4 no-underline font-semibold"
+                  href="#/documentation/styles"
+                  ><i
+                    class="fas fa-paint-brush mr-2 text-gray-500 text-base"
+                  ></i>
+                  Styles</a
+                >
+              </li>
+              <li class="inline-flex">
+                <a
+                  class="text-gray-800 hover:text-gray-600 text-sm block mb-4 no-underline font-semibold"
+                  href="#/documentation/alerts"
+                  ><i class="fab fa-css3-alt mr-2 text-gray-500 text-base"></i>
+                  CSS Components</a
+                >
+              </li>
+              <li class="inline-flex">
+                <a
+                  class="text-gray-800 hover:text-gray-600 text-sm block mb-4 no-underline font-semibold"
+                  href="#/documentation/vue/alerts"
+                  ><i class="fab fa-vuejs mr-2 text-gray-500 text-base"></i>
+                  VueJS</a
+                >
+              </li>
+              <li class="inline-flex">
+                <a
+                  class="text-gray-800 hover:text-gray-600  text-sm block mb-4 no-underline font-semibold"
+                  href="#/documentation/react/alerts"
+                  ><i class="fab fa-react mr-2 text-gray-500 text-base"></i>
+                  React</a
+                >
+              </li>
+              <li class="inline-flex">
+                <a
+                  class="text-gray-800 hover:text-gray-600  text-sm block mb-4 no-underline font-semibold"
+                  href="#/documentation/angular/alerts"
+                  ><i class="fab fa-angular mr-2 text-gray-500 text-base"></i>
+                  Angular</a
+                >
+              </li>
+              <li class="inline-flex">
+                <a
+                  class="text-gray-800 hover:text-gray-600  text-sm block mb-4 no-underline font-semibold"
+                  href="#/documentation/javascript/alerts"
+                  ><i class="fab fa-js-square mr-2 text-gray-500 text-base"></i>
+                  Javascript</a
+                >
+              </li>
+            </ul-->
+

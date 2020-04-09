@@ -1,0 +1,56 @@
+{% extends 'dashboard/layout.html' %}
+{% import 'macros.html' as m %}
+
+{% set active_page = url_for('.page_list') %}
+
+{% block title %} | {% if page %} Edit {% else %} New {% endif %} Page {% endblock %}
+
+{% block page_content %}
+<div class="dashboard-header">
+	<h2 class="flex-1">{% if page %} Edit {% else %} New {% endif %} Page</h2>
+</div>
+
+
+<form method="post" enctype="multipart/form-data" role="form" novalidate class="bg-gray-300 p-5 rounded">
+	{{form.hidden_tag()}}
+	
+	{{m.input(form.title)}}
+	{{m.input(form.body, rows=20)}}
+	{{m.input(form.meta_description)}}			
+	
+	{% if page.image %}
+				
+		<img src="{{page.imgsrc}}" alt="{{page.title}}" class="w-64 shadow">
+				
+	{% elif page.image_external %} 
+		<img src="{{page.image_external}}" class="w-64 shadow" alt="{{page.title}}">
+	{% endif %}
+	{% if page.image or page.image_external %}
+		<span class="text-gray-500 mb-8 text-sm">Current Image</span>
+	{% endif %}
+
+	
+	{{m.file(form.image)}}
+	
+	{{m.input(form.image_external)}}
+	{{m.input(form.image_caption)}}
+	
+
+	{% if page.attachment %}
+		<div class="mb-3">
+			<p class="mb-2">{{page.attachment_caption}}</p>
+			<a href="{{page.attachmentsrc}}" class="btn-sm btn-green">
+					Download
+				
+			</a>
+		</div>
+	{% endif %}
+			
+	{{m.file(form.attachment)}}
+	{{m.input(form.attachment_caption)}}
+			
+	<button class="btn-lg btn-dark">Save</button>
+
+</form>
+{% endblock %}
+

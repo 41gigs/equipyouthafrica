@@ -1,0 +1,49 @@
+{% extends 'dashboard/layout.html' %}
+{% import 'macros.html' as mc %}
+
+{% set active_page = url_for('.message_list') %}
+
+{% block title %} | Messages {% endblock %}
+
+{% block page_content %}
+<!-- Header -->
+<div class="dashboard-header">
+	<h2 class="flex-1">Messages</h2>
+	<!--a class="btn-sm btn-green inline-flex items-center" href="{{url_for('.message_action')}}">
+	{{mc.icon_plus(size=4)}} <span class="ml-1">New</span>
+	</a-->
+</div>
+
+<table class="dashboard-table">
+		<thead>
+			<th>Message<th>
+			<th class="text-center">Sent</th>
+			<th></th>
+		
+		</thead>
+		<tbody>
+			{% for m in messages %}
+			<tr>
+				<td>
+					<p class="text-sm">
+					<span class="font-bold mr-2">{{m.name}}</span> {{m.email}}
+					</p>
+					<p class="text-xs text-gray-500">{{m.text|truncate(100)}}</p>
+				</td>
+				<td class="text-center">{{m.modified| pretty_date}}</td>
+				<td class="text-right">
+					<a class="inline-flex text-blue-500 mr-2"
+					   href="{{url_for('.message_action', uid=m.uid)}}">
+						{{mc.icon_edit()}}
+					</a>
+					<a class="inline-flex text-red-500" 
+					   href="{{url_for('.message_delete', uid=m.uid)}}">
+						{{mc.icon_trash()}}
+					</a>
+				</td>
+			</tr>
+		{% endfor %}
+		</tbody>
+	</table>
+
+{% endblock %}

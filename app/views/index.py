@@ -135,7 +135,7 @@ def page(slug):
 @bp.route('/courses')
 def courses():
     courses = Subject.query.order_by(Subject.priority.desc()).paginate(1, 20, False)
-    return render_template('courses.html', courses=courses)
+    return render_template('courses.html', courses=courses.items)
 
 @bp.route('/fees-structure')
 def fees():

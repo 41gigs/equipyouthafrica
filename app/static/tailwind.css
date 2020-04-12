@@ -20,7 +20,7 @@ svg {
 
 
 .markdown h2 {
-	@apply .py-8  .leading-loose .font-bold 
+	@apply .py-4  .leading-loose .font-bold 
 }
 
 .markdown ul {

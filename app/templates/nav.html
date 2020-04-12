@@ -1,9 +1,8 @@
 {% set navigation = [
 	('About Us', url_for('.page', slug='about-us')),
-	('Apply Now', url_for('.page', slug='apply-now')),
-	('Fees', url_for('.fees')),
-	('Gallery', url_for('.gallery'))
-
+	('Apply Now', url_for('.page', slug='apply-now')),	
+	('Courses', url_for('.courses')),
+	('Fees', url_for('.fees'))
 	] %}
 	<!-- Flash -->
 	{% with messages = get_flashed_messages(with_categories=True) %}  

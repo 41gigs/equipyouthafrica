@@ -13,6 +13,7 @@ def create_app(config=None):
     from .filters import register_filters
     register_filters(app)
 
+    #error_handler(app)
     initialize(app)
     blueprints(app)
 
@@ -41,4 +42,5 @@ def blueprints(app):
     app.register_blueprint(main)
     app.register_blueprint(auth)
     app.register_blueprint(dashboard, url_prefix='/dashboard')
+
     

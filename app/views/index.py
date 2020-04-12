@@ -6,6 +6,15 @@ from ..extensions import db
 
 bp = Blueprint('index', __name__)
 
+@bp.app_errorhandler(404)
+def not_found(error):
+    return render_template('404.html'), 404
+
+@bp.app_errorhandler(500)
+def internal_error(error):
+    return render_template('500.html'), 500
+
+
 @bp.before_request
 def load_settings_func():
     app = {}
@@ -173,3 +182,8 @@ def gallery():
     gallery = Gallery.query.paginate(1, 10, False)
 
     return render_template('gallery.html', gallery=gallery.items)
+
+@bp.route('/gallery/<uid>')
+def gallery_show(uid):
+    gallery = Gallery.query.filter_by(uid=uid).first_or_404()
+    return render_template('gallery_show.html', gallery=gallery)
